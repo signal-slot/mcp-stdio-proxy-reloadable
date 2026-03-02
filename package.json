@@ -1,6 +1,6 @@
 {
-  "name": "mcp-stdio-proxy",
-  "version": "0.1.0",
+  "name": "mcp-stdio-proxy-reloadable",
+  "version": "0.2.0",
   "description": "A stdio-to-stdio MCP proxy with binary file watching and hot reload support.",
   "type": "module",
   "bin": {

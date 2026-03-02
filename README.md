@@ -1,4 +1,4 @@
-# mcp-stdio-proxy
+# mcp-stdio-proxy-reloadable
 
 A stdio-to-stdio MCP proxy with binary file watching and hot reload support.
 
@@ -14,7 +14,7 @@ Spawns a child MCP server process, proxies all stdio messages, and monitors the 
 ## Installation
 
 ```bash
-npm install && npm run build
+npm install -g mcp-stdio-proxy-reloadable
 ```
 
 ## Usage
@@ -26,18 +26,15 @@ usage: mcp-stdio-proxy [--pass-environment] [-e KEY VALUE ...] command [args ...
 ### Examples
 
 ```bash
-# Run directly
-node dist/index.js --pass-environment /path/to/your-mcp-server
+# Run via npx
+npx mcp-stdio-proxy-reloadable --pass-environment /path/to/your-mcp-server
 
 # With environment variables
-node dist/index.js -e DISPLAY :0 /path/to/your-mcp-server
-
-# Via npx (if installed globally or locally)
-npx mcp-stdio-proxy --pass-environment /path/to/your-mcp-server
+npx mcp-stdio-proxy-reloadable -e DISPLAY :0 /path/to/your-mcp-server
 
 # Register with Claude Code
 claude mcp add --transport stdio my-server -- \
-  node /path/to/mcp-stdio-proxy/dist/index.js \
+  npx mcp-stdio-proxy-reloadable \
   --pass-environment /path/to/your-mcp-server
 ```
 
@@ -47,7 +44,7 @@ claude mcp add --transport stdio my-server -- \
 Client (Claude Code)
   │ stdio
   ▼
-mcp-stdio-proxy
+mcp-stdio-proxy-reloadable
   │ stdio
   ▼
 Backend MCP server (child process)
